@@ -2,10 +2,11 @@
   "name": "pdi-backend-next",
   "version": "0.1.0",
   "private": true,
+  "main": "./app.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node .",
     "lint": "next lint"
   },
   "dependencies": {
@@ -17,6 +18,12 @@
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.8.0",
+    "vercel": "^28.9.0"
   }
 }

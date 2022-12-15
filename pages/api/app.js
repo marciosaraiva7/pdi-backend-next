@@ -19,7 +19,7 @@ const User = require("../../models/user");
 const res = require("express/lib/response");
 
 //Open Route - Public Route
-app.get("/", (req, res) => {
+app.get("/ola", (req, res) => {
   res.status(200).json({ msg: "bem vindo a nossa API!" });
 });
 

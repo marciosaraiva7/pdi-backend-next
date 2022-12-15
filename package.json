@@ -2,11 +2,10 @@
   "name": "pdi-backend-next",
   "version": "0.1.0",
   "private": true,
-  "main": "./app.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node .",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {

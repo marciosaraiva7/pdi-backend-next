@@ -15,7 +15,7 @@ mongoose.set("strictQuery", false);
 app.use(express.json());
 
 //Models
-const User = require("./models/user");
+const User = require("../../models/user");
 const res = require("express/lib/response");
 
 //Open Route - Public Route

@@ -52,7 +52,7 @@ export default async function handler(
   }
 
   try {
-    const secret: string = process.env.SECRET ?? "";
+    const secret: string = process.env.NEXT_PUBLIC_SECRET ?? "";
     const token = jwt.sign(
       {
         id: responseProfile._id,

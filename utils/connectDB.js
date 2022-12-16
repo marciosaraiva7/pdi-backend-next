@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const url = process.env.MONGODB_URI;
+const url = process.env.NEXT_PUBLIC_MONGODB_URI;
 
 const client = new MongoClient(url, {
   useNewUrlParser: true,

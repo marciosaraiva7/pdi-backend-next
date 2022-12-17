@@ -24,7 +24,7 @@ export default async function handler(
     return res.status(422).json({
       message: "o email é obrigatório!",
 
-      token: req.body.email,
+      token: "sem email" + req.body.email,
     });
   }
   if (!user.password) {

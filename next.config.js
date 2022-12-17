@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   async headers() {
     return [
       {
@@ -16,12 +16,10 @@ const nextConfig = {
           },
           {
             key: "Access-Control-Allow-Headers",
-            value: "Accept",
+            value: "X-CSRF-Token, X-Requested-With, Authorization ",
           },
         ],
       },
     ];
   },
 };
-
-module.exports = nextConfig;

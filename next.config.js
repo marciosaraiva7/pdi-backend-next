@@ -18,6 +18,10 @@ module.exports = {
             key: "Access-Control-Allow-Headers",
             value: "*",
           },
+          {
+            key: 'X-Custom-Page-Only-Header',
+            value: 'ok',
+        }
         ],
       },
     ];

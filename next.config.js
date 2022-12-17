@@ -7,7 +7,7 @@ module.exports = {
         headers: [
           {
             key: "Access-Control-Allow-Credentials",
-            value: "false",
+            value: "true",
           },
           { key: "Access-Control-Allow-Origin", value: "*" },
           {

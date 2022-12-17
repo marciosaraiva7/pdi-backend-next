@@ -12,11 +12,11 @@ module.exports = {
           { key: "Access-Control-Allow-Origin", value: "*" },
           {
             key: "Access-Control-Allow-Methods",
-            value: "DELETE, POST, GET, OPTIONS",
+            value: "*",
           },
           {
             key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization, X-Requested-With",
+            value: "*",
           },
         ],
       },

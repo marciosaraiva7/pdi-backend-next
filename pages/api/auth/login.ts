@@ -35,6 +35,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   await runMiddleware(req, res, cors);
+  
+
 
   const { db } = await connect();
 

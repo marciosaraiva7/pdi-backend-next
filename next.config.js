@@ -4,7 +4,7 @@ module.exports = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://127.0.0.1:5173/",
+        destination: "/:path*",
       },
     ];
   },

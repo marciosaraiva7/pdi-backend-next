@@ -36,6 +36,7 @@ export default async function handler(
 ) {
 
   await runMiddleware(req, res, cors);
+  res.status(200).json({ message: 'Hello Everyone!' })
 
   const { db } = await connect();
 

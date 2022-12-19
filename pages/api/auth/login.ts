@@ -97,9 +97,3 @@ export default async function handler(
     });
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}

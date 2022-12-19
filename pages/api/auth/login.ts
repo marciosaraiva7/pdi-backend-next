@@ -35,8 +35,6 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   await runMiddleware(req, res, cors);
-  
-
 
   const { db } = await connect();
 
@@ -82,12 +80,13 @@ export default async function handler(
     const token = jwt.sign(
       {
         id: responseProfile._id,
+        name: responseProfile.name
       },
       secret
     );
     res.status(200).json({
       message: "Autenticação realizada com sucesso!",
-      token,
+      token
     });
   } catch (err) {
     console.log(err);

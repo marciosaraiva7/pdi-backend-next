@@ -36,7 +36,7 @@ export default async function handler(
 ) {
 
   await runMiddleware(req, res, cors);
-  res.status(200).json({ message: 'Hello Everyone!' })
+  res.status(200).json({ message: req.body.email })
 
   const { db } = await connect();
 

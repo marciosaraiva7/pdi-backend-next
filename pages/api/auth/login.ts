@@ -34,7 +34,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-
   await runMiddleware(req, res, cors);
 
   const { db } = await connect();
@@ -95,4 +94,10 @@ export default async function handler(
       token: undefined,
     });
   }
+}
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
 }

@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "/:path*",
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -19,9 +27,9 @@ module.exports = {
             value: "*",
           },
           {
-            key: 'X-Custom-Page-Only-Header',
-            value: 'ok',
-        }
+            key: "X-Custom-Page-Only-Header",
+            value: "ok",
+          },
         ],
       },
     ];

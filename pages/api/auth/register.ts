@@ -18,6 +18,7 @@ export default async function register(
     const email = body.email;
     const password = body.password;
     const confirmpassword = body.confirmpassword;
+    const photo = body.photo;
 
     //validations
 
@@ -56,6 +57,7 @@ export default async function register(
       name,
       email,
       password: passwordHash,
+      photo,
     };
     try {
       await db.collection("users").insertOne(user);

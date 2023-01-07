@@ -1,15 +1,17 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
-import User from "../../../models/user";
+import connect from "../../../utils/connectDB";
 
 type Data = {
   msg: string;
 };
 
-const register = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export default async function register(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
   if (req.method === "POST") {
-    console.log(req.body);
     // const { name, email, password, confirmpassword } = body;
     const body = req.body;
     const name = body.name;
@@ -35,7 +37,9 @@ const register = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     //check if user exists
 
-    const userExists = await User.findOne({ email: email });
+    const { db } = await connect();
+
+    const userExists = await db.collection("users").findOne({ email: email });
 
     if (userExists) {
       return res.status(422).json({ msg: "Utilize outro email" });
@@ -48,13 +52,13 @@ const register = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     //create user
 
-    const user = new User({
+    const user = {
       name,
       email,
       password: passwordHash,
-    });
+    };
     try {
-      await user.save();
+      await db.collection("users").insertOne(user);
 
       res.status(201).json({ msg: "usuario criado com sucesso!" });
     } catch (error) {
@@ -64,4 +68,4 @@ const register = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       });
     }
   }
-};
+}

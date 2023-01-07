@@ -80,7 +80,8 @@ export default async function handler(
     const token = jwt.sign(
       {
         id: responseProfile._id,
-        name: responseProfile.name
+        name: responseProfile.name,
+        image: responseProfile.photo
       },
       secret
     );

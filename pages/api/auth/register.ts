@@ -88,7 +88,7 @@ export default async function handler(
     try {
       await db.collection("users").insertOne(user);
 
-      res.status(201).json({ msg: "usuario criado com sucesso!" });
+      res.status(200).json({ msg: "usuario criado com sucesso!" });
     } catch (error) {
       console.log(error);
       res.status(500).json({

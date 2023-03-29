@@ -37,7 +37,6 @@ export default async function checkToken(
 ) {
   await runMiddleware(req, res, cors);
 
-
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
@@ -46,9 +45,9 @@ export default async function checkToken(
   }
 
   try {
-   const secret: string = process.env.NEXT_PUBLIC_SECRET ?? "";
+    const secret: string = process.env.NEXT_PUBLIC_SECRET ?? "";
     jwt.verify(token, secret);
-    res.status(200).json({ message: "Token válido"})
+    res.status(200).json({ message: "Token válido" });
   } catch (err) {
     res.status(400).json({ message: "Token inválido" });
   }

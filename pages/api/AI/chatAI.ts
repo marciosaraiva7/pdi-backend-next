@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Cors from "cors";
 import { Configuration, OpenAIApi } from "openai";
-import { coaching, references } from "./coach.json";
 
 type Data = {
   message: any;
@@ -9,7 +8,7 @@ type Data = {
 };
 
 const cors = Cors({
-  methods: ["POST", "GET", "HEAD"],
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
 });
 
 const configuration = new Configuration({
@@ -19,15 +18,25 @@ const openai = new OpenAIApi(configuration);
 
 function runMiddleware(
   req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Function
+  res: NextApiResponse<Data>,
+  fn: {
+    (
+      req: Cors.CorsRequest,
+      res: {
+        statusCode?: number | undefined;
+        setHeader(key: string, value: string): any;
+        end(): any;
+      },
+      next: (err?: any) => any
+    ): void;
+    (arg0: any, arg1: any, arg2: (result: unknown) => void): void;
+  }
 ) {
   return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
+    fn(req, res, (result: unknown) => {
       if (result instanceof Error) {
         return reject(result);
       }
-
       return resolve(result);
     });
   });
@@ -45,7 +54,7 @@ export default async function chatAI(
     messages: [
       {
         role: "user",
-        content: `${coaching} ${sendMessage}`,
+        content: `${sendMessage}`,
       },
     ],
   });

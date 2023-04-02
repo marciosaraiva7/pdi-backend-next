@@ -42,7 +42,7 @@ function runMiddleware(
   });
 }
 
-export default async function chatAI(
+export default async function ChatAi(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
